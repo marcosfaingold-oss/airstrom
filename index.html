@@ -159,6 +159,35 @@ strong{font-weight:600;color:var(--tiza)}
   font-family:var(--display);font-weight:700;font-size:.92rem;
   letter-spacing:.13em;color:var(--tiza);
 }
+
+/* LAS PESTANAS. En un telefono no entran seis, asi que la tira se corre con
+   el dedo en vez de apilarse o esconderse detras de un boton: se ve que hay
+   mas y se llega de un gesto. */
+.pestanas{
+  display:flex;align-items:center;gap:.15rem;
+  overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  margin-inline:.4rem;min-width:0;
+}
+.pestanas::-webkit-scrollbar{display:none}
+.pestanas a{
+  flex:none;text-decoration:none;white-space:nowrap;
+  font-family:var(--display);font-size:.68rem;font-weight:700;
+  font-variation-settings:"wdth" 104;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--tiza-tenue);
+  padding:.42rem .6rem;border-radius:3px;
+  transition:color .15s ease, background .15s ease;
+}
+.pestanas a:hover{color:var(--tiza);background:rgba(255,255,255,.05)}
+.pestanas a.aca{color:var(--ambar)}
+/* La que todavia no tiene adonde llevar se ve, pero no engana. */
+.pestanas a.pronto{color:#4C5766;cursor:default}
+.pestanas a.pronto:hover{background:none;color:#4C5766}
+
+@media (max-width:560px){
+  .rail-marca span{display:none}
+  .pestanas a{padding:.42rem .45rem;font-size:.64rem;letter-spacing:.08em}
+}
 .idioma{display:flex;border:1px solid var(--bisel);border-radius:3px;overflow:hidden}
 .idioma button{
   font-family:var(--dato);font-size:.68rem;font-weight:600;letter-spacing:.1em;
@@ -548,13 +577,24 @@ footer .rotulo{color:var(--tiza-tenue)}
     </svg>
     <span>airstrom</span>
   </div>
+
+  <nav class="pestanas" aria-label="Secciones">
+    <a href="#arriba" class="aca" data-en="Home">Inicio</a>
+    <a href="#nosotros" data-en="About us">Nosotros</a>
+    <a href="#programa" data-en="The program">El programa</a>
+    <a href="#precio" data-en="Pricing">Precios</a>
+    <a class="pronto" title="En preparaci&#243;n" data-en="Manual">Manual</a>
+    <a class="pronto" title="En preparaci&#243;n" data-en="Downloads">Descargas</a>
+    <a href="#precio" data-en="Contact">Contacto</a>
+  </nav>
+
   <div class="idioma" role="group" aria-label="Idioma">
     <button type="button" data-idioma="es" aria-pressed="true">ES</button>
     <button type="button" data-idioma="en" aria-pressed="false">EN</button>
   </div>
 </nav>
 
-<header class="unidad portada">
+<header class="unidad portada" id="arriba">
   <div class="col">
     <div class="marca">
       <div><span class="wordmark">airstrom</span></div>
@@ -578,7 +618,7 @@ footer .rotulo{color:var(--tiza-tenue)}
   </div>
 </header>
 
-<section class="unidad escenario">
+<section class="unidad escenario" id="programa">
   <div class="ancho">
    <div class="encuadre">
     <span class="hud ai"></span><span class="hud ad"></span>
@@ -633,6 +673,18 @@ footer .rotulo{color:var(--tiza-tenue)}
   </div>
 </section>
 
+<section class="unidad" id="nosotros">
+  <div class="col">
+    <div class="cabeza">
+      <p class="rotulo" data-en="Who made it">Qui&#233;n lo hizo</p>
+      <h2 data-en="Thirty years of radio, inside the program.">Treinta a&#241;os de radio, adentro del programa.</h2>
+    </div>
+    <p class="prosa justo" data-en="Airstrom didn&rsquo;t come out of an office. It was built by someone who spent thirty years operating stations and using automation software &mdash; knowing where it gets in the way, what&rsquo;s missing and what&rsquo;s in the way.">Airstrom no sali&#243; de una oficina. Lo hizo alguien que pas&#243; treinta a&#241;os operando radios y usando programas de automatizaci&#243;n &mdash; sabiendo d&#243;nde molestan, qu&#233; falta y qu&#233; sobra.</p>
+    <p class="prosa justo" data-en="Before it was ever sold, Airstrom was on air. It still runs every day on our own stations, FM and streaming. Everything it does is there because it was needed one night at three in the morning, not because it looked good on a feature list.">Antes de venderse, Airstrom estuvo al aire. Sigue funcionando todos los d&#237;as en emisoras propias, de FM y de streaming. Cada cosa que tiene est&#225; porque hizo falta una noche a las tres de la ma&#241;ana, no porque quedara bien en una lista de caracter&#237;sticas.</p>
+    <p class="prosa justo" data-en="That is why what&rsquo;s up front is what you actually use &mdash; and what nobody uses simply isn&rsquo;t there.">Por eso lo que est&#225; adelante es lo que se usa, y lo que no se usa no est&#225;.</p>
+  </div>
+</section>
+
 <section class="unidad">
   <div class="col">
     <div class="cabeza">
@@ -676,7 +728,7 @@ footer .rotulo{color:var(--tiza-tenue)}
   </div>
 </section>
 
-<section class="unidad cierre" id="cierre">
+<section class="unidad cierre" id="precio">
   <div class="col">
     <p class="rotulo ambar" data-en="Subscribe">Suscribite</p>
     <h2 data-en="Own the air.">Domin&aacute; el aire.</h2>
