@@ -3,7 +3,7 @@
 Brochure de presentación de **Airstrom**, software de automatización de radio
 para FM y streaming.
 
-<https://marcosfaingold-oss.github.io/airstrom/>
+<https://airstromaudio.com>
 
 Este repositorio es solo la página. La fuente, los textos y las herramientas
 para rehacerla viven en el repositorio del producto, en `marca/brochure/`.
