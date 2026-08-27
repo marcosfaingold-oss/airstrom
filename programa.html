@@ -51,8 +51,17 @@ body{
 .pestanas a.aca{color:var(--ambar)}
 .pestanas a.pronto{color:#4C5766;cursor:default}
 :where(a,button):focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
-@media (max-width:560px){.rail-marca span{display:none}
-  .pestanas a{padding:.42rem .45rem;font-size:.64rem;letter-spacing:.08em}}
+
+.idioma{display:flex;border:1px solid var(--bisel);border-radius:3px;overflow:hidden;flex:none}
+.idioma button{font-family:var(--dato);font-size:.66rem;font-weight:600;letter-spacing:.08em;
+  padding:.3rem .5rem;border:0;cursor:pointer;background:transparent;color:var(--tiza-tenue)}
+.idioma button + button{border-left:1px solid var(--bisel)}
+.idioma button[aria-pressed="true"]{background:var(--ambar);color:#111111}
+.idioma button:hover:not([aria-pressed="true"]){color:var(--tiza)}
+
+@media (max-width:640px){.rail-marca span{display:none}
+  .pestanas a{padding:.42rem .4rem;font-size:.62rem;letter-spacing:.06em}
+  .idioma button{padding:.3rem .38rem;font-size:.62rem}}
 
 h1,h2,h3{font-family:var(--display);color:var(--tiza);margin:0;line-height:1.12;text-wrap:balance}
 h1{font-size:clamp(2rem,5.5vw,3rem);font-weight:800;letter-spacing:-.02em}
@@ -80,7 +89,6 @@ li::marker{color:var(--ambar)}
 .aviso p{margin:.4rem 0}
 .aviso p:first-child{margin-top:0}.aviso p:last-child{margin-bottom:0}
 
-/* el índice de arriba */
 /* Trece pestanas no llenan cuatro columnas: la celda que sobra tiene que
    parecer un espacio vacio, no un agujero. Por eso las lineas van como borde
    de cada celda y no como separacion del contenedor. */
@@ -114,191 +122,238 @@ footer a{color:var(--ambar-claro);text-decoration:none;border-bottom:1px solid r
     <span>airstrom</span>
   </a>
   <nav class="pestanas" aria-label="Secciones">
-    <a href="/">Inicio</a>
-    <a href="/#nosotros">Nosotros</a>
-    <a href="/programa.html" class="aca">El programa</a>
-    <a href="/#precio">Precios</a>
-    <a class="pronto" title="En preparación">Manual</a>
-    <a class="pronto" title="En preparación">Descargas</a>
-    <a href="/#precio">Contacto</a>
+    <a href="/" data-en="Home" data-pt="Início">Inicio</a>
+    <a href="/#nosotros" data-en="About us" data-pt="Sobre nós">Nosotros</a>
+    <a href="/programa.html" class="aca" data-en="The program" data-pt="O programa">El programa</a>
+    <a href="/#precio" data-en="Pricing" data-pt="Preços">Precios</a>
+    <a class="pronto" data-en="Manual" data-pt="Manual">Manual</a>
+    <a class="pronto" data-en="Downloads" data-pt="Downloads">Descargas</a>
+    <a href="/#precio" data-en="Contact" data-pt="Contato">Contacto</a>
   </nav>
+  <div class="idioma" role="group" aria-label="Idioma">
+    <button type="button" data-idioma="es" aria-pressed="true">ES</button>
+    <button type="button" data-idioma="en" aria-pressed="false">EN</button>
+    <button type="button" data-idioma="pt" aria-pressed="false">PT</button>
+  </div>
 </nav>
 
 <div class="hoja">
 
 <header>
-  <p class="rotulo">El programa, por dentro</p>
-  <h1>Qué tiene Airstrom</h1>
-  <p class="entrada">Todo lo que hace, función por función. No es un manual de instrucciones: es la lista de lo que vas a encontrar adentro cuando lo abras.</p>
+  <p class="rotulo" data-en="Inside the program" data-pt="O programa por dentro">El programa, por dentro</p>
+  <h1 data-en="What Airstrom has" data-pt="O que o Airstrom tem">Qué tiene Airstrom</h1>
+  <p class="entrada" data-en="Everything it does, feature by feature. This isn&rsquo;t a manual: it&rsquo;s the list of what you&rsquo;ll find inside when you open it." data-pt="Tudo o que ele faz, função por função. Não é um manual de instruções: é a lista do que você vai encontrar lá dentro quando abrir.">Todo lo que hace, función por función. No es un manual de instrucciones: es la lista de lo que vas a encontrar adentro cuando lo abras.</p>
 </header>
 
-<h2 style="border-top:0;box-shadow:none;padding-top:0;margin-top:2.5rem">Lo que hace, en dos renglones</h2>
+<h2 style="border-top:0;box-shadow:none;padding-top:0;margin-top:2.5rem" data-en="What it does, in two lines" data-pt="O que faz, em duas linhas">Lo que hace, en dos renglones</h2>
 
-<p><strong>Airstrom mantiene una radio al aire sola.</strong> Elige la música sin repetir, arma las tandas de publicidad respetando lo que cada anunciante contrató, cumple los horarios y deja registrado todo lo que salió.</p>
+<p data-en="<strong>Airstrom keeps a radio station on air by itself.</strong> It picks the music without repeating, builds the ad breaks respecting what each advertiser bought, keeps to the schedule and logs everything that aired." data-pt="<strong>O Airstrom mantém uma emissora no ar sozinho.</strong> Escolhe a música sem repetir, monta os intervalos comerciais respeitando o que cada anunciante contratou, cumpre os horários e registra tudo o que foi ao ar."><strong>Airstrom mantiene una radio al aire sola.</strong> Elige la música sin repetir, arma las tandas de publicidad respetando lo que cada anunciante contrató, cumple los horarios y deja registrado todo lo que salió.</p>
 
-<p>Y cuando alguien se sienta frente al micrófono, deja de ser un automático y pasa a ser una consola: cuatro faders, vúmetros y botonera para disparar a mano.</p>
+<p data-en="And when someone sits down at the microphone, it stops being an automation system and becomes a console: four faders, VU meters and a cart wall to fire things by hand." data-pt="E quando alguém senta na frente do microfone, deixa de ser um automático e vira uma mesa: quatro faders, vuímetros e painel de botões para disparar na mão.">Y cuando alguien se sienta frente al micrófono, deja de ser un automático y pasa a ser una consola: cuatro faders, vúmetros y botonera para disparar a mano.</p>
 
 <div class="aviso">
-  <p><strong>Corre en la computadora de la radio, no en internet.</strong> Si se corta la conexión, la radio sigue al aire — lo único que se cae es el streaming. Y si se corta la luz, vuelve sola cuando la máquina arranca, retomando el ciclo donde estaba.</p>
+  <p data-en="<strong>It runs on the station&rsquo;s own computer, not in the cloud.</strong> If the internet drops, the station stays on air &mdash; the only thing that falls is the stream. And if the power goes out, it comes back by itself when the machine boots, picking the cycle up where it left off." data-pt="<strong>Roda no computador da emissora, não na internet.</strong> Se a conexão cair, a rádio continua no ar &mdash; a única coisa que para é o streaming. E se faltar energia, ele volta sozinho quando a máquina liga, retomando o ciclo de onde parou."><strong>Corre en la computadora de la radio, no en internet.</strong> Si se corta la conexión, la radio sigue al aire &mdash; lo único que se cae es el streaming. Y si se corta la luz, vuelve sola cuando la máquina arranca, retomando el ciclo donde estaba.</p>
 </div>
 
 <div class="indice">
-  <a href="#principal"><b>La pantalla</b>Principal</a>
-  <a href="#carpetas"><b>Pestaña</b>Carpetas</a>
-  <a href="#archivos"><b>Pestaña</b>Archivos</a>
-  <a href="#autodj"><b>Pestaña</b>AutoDJ</a>
-  <a href="#programacion"><b>Pestaña</b>Programación</a>
-  <a href="#publicidad"><b>Pestaña</b>Publicidad</a>
-  <a href="#evento"><b>Pestaña</b>Evento</a>
-  <a href="#reloj"><b>Pestaña</b>Reloj</a>
-  <a href="#crossfade"><b>Pestaña</b>Crossfade</a>
-  <a href="#sonido"><b>Pestaña</b>Sonido</a>
-  <a href="#salida"><b>Pestaña</b>Salida</a>
-  <a href="#stream"><b>Pestaña</b>Stream</a>
-  <a href="#log"><b>Pestaña</b>Log</a>
+  <a href="#principal"><b data-en="The screen" data-pt="A tela">La pantalla</b><span data-en="Main" data-pt="Principal">Principal</span></a>
+  <a href="#carpetas"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Folders" data-pt="Pastas">Carpetas</span></a>
+  <a href="#archivos"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Files" data-pt="Arquivos">Archivos</span></a>
+  <a href="#autodj"><b data-en="Tab" data-pt="Aba">Pestaña</b><span>AutoDJ</span></a>
+  <a href="#programacion"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Scheduling" data-pt="Programação">Programación</span></a>
+  <a href="#publicidad"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Advertising" data-pt="Publicidade">Publicidad</span></a>
+  <a href="#evento"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Event" data-pt="Evento">Evento</span></a>
+  <a href="#reloj"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Clock" data-pt="Relógio">Reloj</span></a>
+  <a href="#crossfade"><b data-en="Tab" data-pt="Aba">Pestaña</b><span>Crossfade</span></a>
+  <a href="#sonido"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Sound" data-pt="Som">Sonido</span></a>
+  <a href="#salida"><b data-en="Tab" data-pt="Aba">Pestaña</b><span data-en="Output" data-pt="Saída">Salida</span></a>
+  <a href="#stream"><b data-en="Tab" data-pt="Aba">Pestaña</b><span>Stream</span></a>
+  <a href="#log"><b data-en="Tab" data-pt="Aba">Pestaña</b><span>Log</span></a>
 </div>
 
-<h2 id="principal">La pantalla principal</h2>
+<h2 id="principal" data-en="The main screen" data-pt="A tela principal">La pantalla principal</h2>
 
-<p>Es la que está abierta todo el día. Todo lo que el operador necesita mirar entra sin abrir nada.</p>
+<p data-en="This is the one that stays open all day. Everything the operator needs to look at fits without opening anything else." data-pt="É a que fica aberta o dia inteiro. Tudo o que o operador precisa olhar cabe sem abrir mais nada.">Es la que está abierta todo el día. Todo lo que el operador necesita mirar entra sin abrir nada.</p>
 
 <ul>
-  <li><strong>Lo que está sonando</strong> — título, artista, cuánto lleva y cuánto le falta, con la barra de avance. Se puede arrastrar para moverse dentro del tema.</li>
-  <li><strong>Los segundos de instrumental antes de que entre la voz</strong>, con cuenta regresiva al lado del tiempo — <em>«voz en 7 s»</em>—, latiendo los últimos tres. Es lo que el locutor tiene para hablar encima.</li>
-  <li><strong>La grilla del día</strong> — lo que viene, con la hora de cada cosa, de qué carpeta sale y las tandas marcadas. Cada renglón tiene su botón para escucharlo por el cue sin que salga al aire.</li>
-  <li><strong>El transporte</strong> — pausa, crossfade, fade y sigue, saltar, fade out. El de pausa ocupa el doble y tiene color propio: es la decisión que no se puede errar.</li>
-  <li><strong>Automático o manual</strong>, con un botón.</li>
-  <li><strong>La botonera</strong> — cartuchos para disparar a mano: cortinas, efectos, o canciones para pasar en vivo. Se asignan una vez y quedan.</li>
-  <li><strong>La consola</strong> — cuatro faders (MAIN, AUTO, CUE y MIC/LINE), vúmetros por canal y cue por canal para escuchar por los auriculares lo que está por salir.</li>
-  <li><strong>El reloj</strong>, grande, con el día y la fecha escritos. Al aire se pone rojo: es la señal más barata de que la radio está saliendo.</li>
+  <li data-en="<strong>What&rsquo;s playing</strong> &mdash; title, artist, how much has run and how much is left, with the progress bar. You can drag it to move inside the track." data-pt="<strong>O que está tocando</strong> &mdash; título, artista, quanto já rodou e quanto falta, com a barra de progresso. Dá para arrastar e se mover dentro da música."><strong>Lo que está sonando</strong> &mdash; título, artista, cuánto lleva y cuánto le falta, con la barra de avance. Se puede arrastrar para moverse dentro del tema.</li>
+  <li data-en="<strong>The seconds of intro before the vocal comes in</strong>, counting down next to the time &mdash; <em>&ldquo;vocal in 7 s&rdquo;</em> &mdash; blinking for the last three. It&rsquo;s the room the announcer has to talk over the track." data-pt="<strong>Os segundos de introdução antes de entrar o vocal</strong>, com contagem regressiva ao lado do tempo &mdash; <em>&laquo;voz em 7 s&raquo;</em> &mdash; piscando nos últimos três. É o espaço que o locutor tem para falar por cima."><strong>Los segundos de instrumental antes de que entre la voz</strong>, con cuenta regresiva al lado del tiempo &mdash; <em>&laquo;voz en 7 s&raquo;</em>&mdash;, latiendo los últimos tres. Es lo que el locutor tiene para hablar encima.</li>
+  <li data-en="<strong>The day&rsquo;s log</strong> &mdash; what&rsquo;s coming: the time of every track and every spot, which folder it comes from, and the ad breaks marked. Each row has its own button to hear it on cue without it going to air." data-pt="<strong>A grade do dia</strong> &mdash; o que vem: o horário de cada música e de cada spot, de qual pasta sai, e os intervalos marcados. Cada linha tem seu botão para ouvir pelo cue sem ir ao ar."><strong>La grilla del día</strong> &mdash; lo que viene: la hora de cada tema y de cada aviso, de qué carpeta sale y las tandas marcadas. Cada renglón tiene su botón para escucharlo por el cue sin que salga al aire.</li>
+  <li data-en="<strong>Transport</strong> &mdash; pause, crossfade, fade and continue, skip, fade out. The pause button is twice the size and has its own colour: it&rsquo;s the decision you can&rsquo;t get wrong." data-pt="<strong>O transporte</strong> &mdash; pausa, crossfade, fade e segue, pular, fade out. O de pausa ocupa o dobro e tem cor própria: é a decisão que não dá para errar."><strong>El transporte</strong> &mdash; pausa, crossfade, fade y sigue, saltar, fade out. El de pausa ocupa el doble y tiene color propio: es la decisión que no se puede errar.</li>
+  <li data-en="<strong>Automatic or manual</strong>, with one button." data-pt="<strong>Automático ou manual</strong>, com um botão."><strong>Automático o manual</strong>, con un botón.</li>
+  <li data-en="<strong>The cart wall</strong> &mdash; buttons to fire by hand: beds, effects, or songs to play live. Assigned once and they stay." data-pt="<strong>O painel de botões</strong> &mdash; para disparar na mão: vinhetas, efeitos ou músicas para tocar ao vivo. Você atribui uma vez e fica."><strong>La botonera</strong> &mdash; cartuchos para disparar a mano: cortinas, efectos, o canciones para pasar en vivo. Se asignan una vez y quedan.</li>
+  <li data-en="<strong>The console</strong> &mdash; four faders (MAIN, AUTO, CUE and MIC/LINE), VU meters per channel and cue per channel to hear on the headphones what&rsquo;s about to go out." data-pt="<strong>A mesa</strong> &mdash; quatro faders (MAIN, AUTO, CUE e MIC/LINE), vuímetros por canal e cue por canal para ouvir no fone o que está prestes a ir ao ar."><strong>La consola</strong> &mdash; cuatro faders (MAIN, AUTO, CUE y MIC/LINE), vúmetros por canal y cue por canal para escuchar por los auriculares lo que está por salir.</li>
+  <li data-en="<strong>The clock</strong>, big, with the day and date written out. On air it turns red: it&rsquo;s the cheapest signal that the station is transmitting." data-pt="<strong>O relógio</strong>, grande, com o dia e a data escritos. No ar fica vermelho: é o sinal mais barato de que a emissora está transmitindo."><strong>El reloj</strong>, grande, con el día y la fecha escritos. Al aire se pone rojo: es la señal más barata de que la radio está saliendo.</li>
 </ul>
 
-<h2 id="carpetas"><span class="n">01</span>Carpetas</h2>
-<p><em>Dónde está la música.</em></p>
-<p>Se agregan todas las carpetas del disco: música, institucionales, aperturas, cierres y publicidades. <strong>El tipo de cada una define cómo rota:</strong> las de publicidad van en círculo —todos los avisos salen la misma cantidad de veces— y el resto va por bolsa, que es lo que hace que no se repita ningún tema hasta que sonaron todos.</p>
+<h2 id="carpetas"><span class="n">01</span><span data-en="Folders" data-pt="Pastas">Carpetas</span></h2>
+<p><em data-en="Where the music lives." data-pt="Onde está a música.">Dónde está la música.</em></p>
+<p data-en="You add every folder on the disk: music, station IDs, break openers, break closers and commercials. <strong>The type of each one decides how it rotates:</strong> commercial folders go round in a circle &mdash; every spot airs the same number of times &mdash; and the rest go by bag, which is what makes sure no track repeats until they have all played." data-pt="Você adiciona todas as pastas do disco: música, institucionais, aberturas, encerramentos e comerciais. <strong>O tipo de cada uma define como ela gira:</strong> as de comerciais giram em círculo &mdash; todos os spots vão ao ar a mesma quantidade de vezes &mdash; e o resto gira por sacola, que é o que garante que nenhuma música se repita até que todas tenham tocado.">Se agregan todas las carpetas del disco: música, institucionales, aperturas, cierres y publicidades. <strong>El tipo de cada una define cómo rota:</strong> las de publicidad van en círculo &mdash;todos los avisos salen la misma cantidad de veces&mdash; y el resto va por bolsa, que es lo que hace que no se repita ningún tema hasta que sonaron todos.</p>
 <ul>
-  <li>Agregar carpeta, con su tipo</li>
-  <li>Escanear biblioteca — vuelve a leer el disco y toma lo que agregaste</li>
+  <li data-en="Add a folder, with its type" data-pt="Adicionar pasta, com seu tipo">Agregar carpeta, con su tipo</li>
+  <li data-en="Scan library &mdash; re-reads the disk and picks up whatever you added" data-pt="Escanear biblioteca &mdash; relê o disco e pega o que você adicionou">Escanear biblioteca &mdash; vuelve a leer el disco y toma lo que agregaste</li>
 </ul>
 
-<h2 id="archivos"><span class="n">02</span>Archivos</h2>
-<p><em>El administrador de audio.</em></p>
-<p>Dos columnas, una carpeta en cada una, para mover temas de un lado al otro. Lo que se hace acá <strong>toca los archivos en el disco de verdad</strong> — y borrar manda a la papelera, no destruye.</p>
+<h2 id="archivos"><span class="n">02</span><span data-en="Files" data-pt="Arquivos">Archivos</span></h2>
+<p><em data-en="The audio manager." data-pt="O gerenciador de áudio.">El administrador de audio.</em></p>
+<p data-en="Two columns, one folder in each, to move tracks from one side to the other. What you do here <strong>touches the actual files on disk</strong> &mdash; and deleting sends them to the recycle bin, it doesn&rsquo;t destroy them." data-pt="Duas colunas, uma pasta em cada, para mover músicas de um lado para o outro. O que se faz aqui <strong>mexe nos arquivos do disco de verdade</strong> &mdash; e apagar manda para a lixeira, não destrói.">Dos columnas, una carpeta en cada una, para mover temas de un lado al otro. Lo que se hace acá <strong>toca los archivos en el disco de verdad</strong> &mdash; y borrar manda a la papelera, no destruye.</p>
 <ul>
-  <li>Mover entre carpetas, agregar audio, renombrar y mandar a la papelera</li>
-  <li>Arrastrar un tema a la izquierda para que sea <strong>el próximo al aire</strong></li>
-  <li><strong>Blancos</strong> — busca los silencios al principio y al final de cada archivo de la carpeta y anota desde dónde reproducir. <em>No toca el archivo.</em></li>
-  <li><strong>Emparejar</strong> — mide el volumen de cada archivo y anota cuánto subir o bajar, contra la mediana de la carpeta. Es lo que hace que una radio suene pareja. <em>Tampoco toca el archivo.</em></li>
-  <li><strong>Cómo sale al aire</strong> — una ventana por tema: la forma de onda a lo ancho, las marcas de entrada y salida, los desvanecidos dibujados donde pasan, el volumen propio del tema y los segundos de intro antes de la voz. Se escucha con los desvanecidos puestos, no plano.</li>
+  <li data-en="Move between folders, add audio, rename and send to the recycle bin" data-pt="Mover entre pastas, adicionar áudio, renomear e mandar para a lixeira">Mover entre carpetas, agregar audio, renombrar y mandar a la papelera</li>
+  <li data-en="Drag a track to the left column to make it <strong>the next one on air</strong>" data-pt="Arrastar uma música para a coluna da esquerda para que seja <strong>a próxima no ar</strong>">Arrastrar un tema a la izquierda para que sea <strong>el próximo al aire</strong></li>
+  <li data-en="<strong>Trim</strong> &mdash; finds the silence at the start and end of every file in the folder and notes where to start playing. <em>It does not touch the file.</em>" data-pt="<strong>Silêncios</strong> &mdash; procura o silêncio no começo e no fim de cada arquivo da pasta e anota de onde reproduzir. <em>Não mexe no arquivo.</em>"><strong>Blancos</strong> &mdash; busca los silencios al principio y al final de cada archivo de la carpeta y anota desde dónde reproducir. <em>No toca el archivo.</em></li>
+  <li data-en="<strong>Level match</strong> &mdash; measures the volume of every file and notes how much to raise or lower it, against the folder&rsquo;s median. It&rsquo;s what makes a station sound even. <em>It doesn&rsquo;t touch the file either.</em>" data-pt="<strong>Nivelar</strong> &mdash; mede o volume de cada arquivo e anota quanto subir ou baixar, contra a mediana da pasta. É o que faz uma emissora soar pareja. <em>Também não mexe no arquivo.</em>"><strong>Emparejar</strong> &mdash; mide el volumen de cada archivo y anota cuánto subir o bajar, contra la mediana de la carpeta. Es lo que hace que una radio suene pareja. <em>Tampoco toca el archivo.</em></li>
+  <li data-en="<strong>How it goes to air</strong> &mdash; one window per track: the waveform across the full width, the in and out marks, the fades drawn where they happen, the track&rsquo;s own volume trim and the seconds of intro before the vocal. You audition it with the fades applied, not flat." data-pt="<strong>Como vai ao ar</strong> &mdash; uma janela por música: a forma de onda em toda a largura, as marcas de entrada e saída, os fades desenhados onde acontecem, o volume próprio da música e os segundos de introdução antes do vocal. Você escuta com os fades aplicados, não seco."><strong>Cómo sale al aire</strong> &mdash; una ventana por tema: la forma de onda a lo ancho, las marcas de entrada y salida, los desvanecidos dibujados donde pasan, el volumen propio del tema y los segundos de intro antes de la voz. Se escucha con los desvanecidos puestos, no plano.</li>
 </ul>
 
 <h2 id="autodj"><span class="n">03</span>AutoDJ</h2>
-<p><em>El orden en que suena la radio.</em></p>
-<p>Se trabaja con <strong>perfiles</strong>: cada uno es una manera de sonar. Uno para la mañana, otro para la tarde, otro para el fin de semana. Se crean, se duplican y se borran.</p>
+<p><em data-en="The order the station sounds in." data-pt="A ordem em que a emissora soa.">El orden en que suena la radio.</em></p>
+<p data-en="You work with <strong>profiles</strong>: each one is a way of sounding. One for the morning, another for the afternoon, another for the weekend. You create, duplicate and delete them." data-pt="Trabalha-se com <strong>perfis</strong>: cada um é um jeito de soar. Um para a manhã, outro para a tarde, outro para o fim de semana. Você cria, duplica e apaga.">Se trabaja con <strong>perfiles</strong>: cada uno es una manera de sonar. Uno para la mañana, otro para la tarde, otro para el fin de semana. Se crean, se duplican y se borran.</p>
 <ul>
-  <li><strong>Secuencia</strong> — el orden en que recorre las carpetas, en loop. Un paso de institucionales donde quieras que la radio se identifique entre tema y tema.</li>
-  <li><strong>Tanda</strong> — apertura, publicidades y cierre, cada una saliendo de su propia carpeta</li>
-  <li><strong>Actualizar AutoDJ</strong> — relee las carpetas y aplica los cambios al aire en el momento, <strong>sin cortar lo que está sonando</strong></li>
-  <li><strong>Estado de las bolsas</strong> — cuánto le falta a cada carpeta para completar el ciclo</li>
+  <li data-en="<strong>Sequence</strong> &mdash; the order it walks through the folders, on a loop. Put a station-ID step wherever you want the station to identify itself between tracks." data-pt="<strong>Sequência</strong> &mdash; a ordem em que percorre as pastas, em loop. Coloque um passo de institucionais onde quiser que a emissora se identifique entre uma música e outra."><strong>Secuencia</strong> &mdash; el orden en que recorre las carpetas, en loop. Un paso de institucionales donde quieras que la radio se identifique entre tema y tema.</li>
+  <li data-en="<strong>The break</strong> &mdash; opener, commercials and closer, each coming out of its own folder" data-pt="<strong>O intervalo</strong> &mdash; abertura, comerciais e encerramento, cada um saindo da sua própria pasta"><strong>Tanda</strong> &mdash; apertura, publicidades y cierre, cada una saliendo de su propia carpeta</li>
+  <li data-en="<strong>Refresh AutoDJ</strong> &mdash; re-reads the folders and applies the changes on air immediately, <strong>without cutting what&rsquo;s playing</strong>" data-pt="<strong>Atualizar o AutoDJ</strong> &mdash; relê as pastas e aplica as mudanças no ar na hora, <strong>sem cortar o que está tocando</strong>"><strong>Actualizar AutoDJ</strong> &mdash; relee las carpetas y aplica los cambios al aire en el momento, <strong>sin cortar lo que está sonando</strong></li>
+  <li data-en="<strong>Bag status</strong> &mdash; how much each folder has left before completing its cycle" data-pt="<strong>Estado das sacolas</strong> &mdash; quanto falta para cada pasta completar o ciclo"><strong>Estado de las bolsas</strong> &mdash; cuánto le falta a cada carpeta para completar el ciclo</li>
 </ul>
 
-<h2 id="programacion"><span class="n">04</span>Programación</h2>
-<p><em>La grilla de la semana.</em></p>
-<p>Qué perfil suena a cada hora, día por día. Se arma un día entero y para el siguiente se usa <strong>Copiar de…</strong>, cambiando solo lo que sea distinto — así el viernes que tiene un programa especial es el jueves copiado con un bloque cambiado, y no hay que rehacer nada.</p>
+<h2 id="programacion"><span class="n">04</span><span data-en="Scheduling" data-pt="Programação">Programación</span></h2>
+<p><em data-en="The week&rsquo;s grid." data-pt="A grade da semana.">La grilla de la semana.</em></p>
+<p data-en="Which profile plays at each hour, day by day. You build one whole day and for the next you use <strong>Copy from…</strong>, changing only what&rsquo;s different &mdash; so the Friday with a special show is Thursday copied with one block changed, and you don&rsquo;t redo anything." data-pt="Qual perfil toca em cada horário, dia a dia. Você monta um dia inteiro e para o seguinte usa <strong>Copiar de…</strong>, mudando só o que for diferente &mdash; assim a sexta que tem um programa especial é a quinta copiada com um bloco trocado, e não se refaz nada.">Qué perfil suena a cada hora, día por día. Se arma un día entero y para el siguiente se usa <strong>Copiar de…</strong>, cambiando solo lo que sea distinto &mdash; así el viernes que tiene un programa especial es el jueves copiado con un bloque cambiado, y no hay que rehacer nada.</p>
 <div class="aviso">
-  <p><strong>Nunca corta un tema.</strong> Si a las 21:00 hay una canción al aire, la canción termina y recién ahí entra el perfil nuevo.</p>
+  <p data-en="<strong>It never cuts a track.</strong> If there&rsquo;s a song on air at 21:00, the song finishes and only then does the new profile come in." data-pt="<strong>Nunca corta uma música.</strong> Se às 21h tem uma música no ar, ela termina e só então entra o perfil novo."><strong>Nunca corta un tema.</strong> Si a las 21:00 hay una canción al aire, la canción termina y recién ahí entra el perfil nuevo.</p>
 </div>
-<p>Se puede apagar entera y dejar la radio con el perfil que elijas a mano.</p>
+<p data-en="You can switch the whole thing off and leave the station on whichever profile you pick by hand." data-pt="Dá para desligar tudo e deixar a emissora com o perfil que você escolher na mão.">Se puede apagar entera y dejar la radio con el perfil que elijas a mano.</p>
 
-<h2 id="publicidad"><span class="n">05</span>Publicidad</h2>
-<p><em>Los contratos, y que se cumplan.</em></p>
-<p>Cada anunciante con sus spots y la forma en que los contrató:</p>
+<h2 id="publicidad"><span class="n">05</span><span data-en="Advertising" data-pt="Publicidade">Publicidad</span></h2>
+<p><em data-en="The contracts &mdash; and making sure they&rsquo;re met." data-pt="Os contratos, e que sejam cumpridos.">Los contratos, y que se cumplan.</em></p>
+<p data-en="Each advertiser with their spots and the way they bought them:" data-pt="Cada anunciante com seus spots e a forma como contratou:">Cada anunciante con sus spots y la forma en que los contrató:</p>
 <ul>
-  <li><strong>Rotativo por franja horaria</strong> — tantas salidas por día, dentro de la franja</li>
-  <li><strong>Horarios estrictos</strong> — a la hora exacta, la que se vendió</li>
-  <li>Salidas por día, y desde cuándo hasta cuándo — o sin fecha de fin, hasta que lo saques</li>
-  <li>Un spot puede ser un archivo o una carpeta entera, para que roten varias piezas del mismo aviso</li>
+  <li data-en="<strong>Rotating within a time band</strong> &mdash; so many airings a day, inside the band" data-pt="<strong>Rotativo por faixa horária</strong> &mdash; tantas inserções por dia, dentro da faixa"><strong>Rotativo por franja horaria</strong> &mdash; tantas salidas por día, dentro de la franja</li>
+  <li data-en="<strong>Fixed times</strong> &mdash; at the exact hour that was sold" data-pt="<strong>Horários fixos</strong> &mdash; na hora exata que foi vendida"><strong>Horarios estrictos</strong> &mdash; a la hora exacta, la que se vendió</li>
+  <li data-en="Airings per day, and from when to when &mdash; or with no end date, until you take it out" data-pt="Inserções por dia, e de quando até quando &mdash; ou sem data de fim, até você tirar">Salidas por día, y desde cuándo hasta cuándo &mdash; o sin fecha de fin, hasta que lo saques</li>
+  <li data-en="A spot can be one file or a whole folder, so several pieces of the same campaign rotate" data-pt="Um spot pode ser um arquivo ou uma pasta inteira, para que várias peças da mesma campanha girem">Un spot puede ser un archivo o una carpeta entera, para que roten varias piezas del mismo aviso</li>
 </ul>
-<p><strong>Datos comerciales:</strong> número de orden, vendedor, número de agencia, compañía, CUIT, anunciante y producto.</p>
+<p data-en="<strong>Commercial data:</strong> order number, salesperson, agency number, company, tax ID, advertiser and product." data-pt="<strong>Dados comerciais:</strong> número do pedido, vendedor, número da agência, empresa, CNPJ, anunciante e produto."><strong>Datos comerciales:</strong> número de orden, vendedor, número de agencia, compañía, CUIT, anunciante y producto.</p>
 <ul>
-  <li><strong>Franjas horarias</strong> — se definen una vez y se usan en todos los contratos</li>
-  <li><strong>Certificaciones</strong> — el comprobante para el anunciante, con membrete, logo y firma</li>
-  <li><strong>Cumplimiento de hoy</strong> — cuánto lleva entregado cada anunciante y cuánto le falta, en vivo</li>
+  <li data-en="<strong>Time bands</strong> &mdash; defined once and used in every contract" data-pt="<strong>Faixas horárias</strong> &mdash; definidas uma vez e usadas em todos os contratos"><strong>Franjas horarias</strong> &mdash; se definen una vez y se usan en todos los contratos</li>
+  <li data-en="<strong>Certificates</strong> &mdash; the proof of broadcast for the advertiser, with letterhead, logo and signature" data-pt="<strong>Certificados de veiculação</strong> &mdash; o comprovante para o anunciante, com timbre, logo e assinatura"><strong>Certificaciones</strong> &mdash; el comprobante para el anunciante, con membrete, logo y firma</li>
+  <li data-en="<strong>Today&rsquo;s compliance</strong> &mdash; how much each advertiser has been delivered and how much is left, live" data-pt="<strong>Cumprimento de hoje</strong> &mdash; quanto já foi entregue a cada anunciante e quanto falta, ao vivo"><strong>Cumplimiento de hoy</strong> &mdash; cuánto lleva entregado cada anunciante y cuánto le falta, en vivo</li>
 </ul>
 
-<h2 id="evento"><span class="n">06</span>Evento</h2>
-<p><em>Lo que sale a la hora exacta.</em></p>
-<p>Un bloque con apertura, tema y cierre, a una hora fija y los días que elijas. Va en el medio de la música, <strong>fuera de la tanda</strong>: a la hora marcada espera a que termine el tema que está sonando y entra.</p>
-<p>Nunca corta una canción ni una publicidad.</p>
+<h2 id="evento"><span class="n">06</span><span data-en="Event" data-pt="Evento">Evento</span></h2>
+<p><em data-en="What goes out at an exact time." data-pt="O que vai ao ar na hora exata.">Lo que sale a la hora exacta.</em></p>
+<p data-en="A block with an opener, a track and a closer, at a fixed time on the days you choose. It sits in the middle of the music, <strong>outside the ad break</strong>: at the marked time it waits for the track that&rsquo;s playing to finish and comes in." data-pt="Um bloco com abertura, música e encerramento, em horário fixo e nos dias que você escolher. Fica no meio da música, <strong>fora do intervalo</strong>: na hora marcada espera a música que está tocando terminar e entra.">Un bloque con apertura, tema y cierre, a una hora fija y los días que elijas. Va en el medio de la música, <strong>fuera de la tanda</strong>: a la hora marcada espera a que termine el tema que está sonando y entra.</p>
+<p data-en="It never cuts a song or a commercial." data-pt="Nunca corta uma música nem um comercial.">Nunca corta una canción ni una publicidad.</p>
 
-<h2 id="reloj"><span class="n">07</span>Reloj</h2>
-<p><em>Cuándo entran las tandas.</em></p>
+<h2 id="reloj"><span class="n">07</span><span data-en="Clock" data-pt="Relógio">Reloj</span></h2>
+<p><em data-en="When the ad breaks come in." data-pt="Quando entram os intervalos.">Cuándo entran las tandas.</em></p>
 <ul>
-  <li><strong>Minutos de tanda</strong> — a los 20 y a los 50, por ejemplo</li>
-  <li><strong>Franjas horarias</strong> con reglas propias, para que la mañana no tenga la misma carga que la madrugada</li>
-  <li><strong>Máximo de publicidad por tanda</strong>, en segundos</li>
-  <li><strong>Separación de artista</strong> — minutos que tienen que pasar antes de repetir el mismo intérprete</li>
+  <li data-en="<strong>Break minutes</strong> &mdash; at 20 past and 10 to, for example" data-pt="<strong>Minutos do intervalo</strong> &mdash; aos 20 e aos 50, por exemplo"><strong>Minutos de tanda</strong> &mdash; a los 20 y a los 50, por ejemplo</li>
+  <li data-en="<strong>Time bands</strong> with their own rules, so the morning doesn&rsquo;t carry the same load as the small hours" data-pt="<strong>Faixas horárias</strong> com regras próprias, para que a manhã não tenha a mesma carga da madrugada"><strong>Franjas horarias</strong> con reglas propias, para que la mañana no tenga la misma carga que la madrugada</li>
+  <li data-en="<strong>Maximum advertising per break</strong>, in seconds" data-pt="<strong>Máximo de publicidade por intervalo</strong>, em segundos"><strong>Máximo de publicidad por tanda</strong>, en segundos</li>
+  <li data-en="<strong>Artist separation</strong> &mdash; minutes that must pass before repeating the same performer" data-pt="<strong>Separação de artista</strong> &mdash; minutos que precisam passar antes de repetir o mesmo intérprete"><strong>Separación de artista</strong> &mdash; minutos que tienen que pasar antes de repetir el mismo intérprete</li>
 </ul>
 
 <h2 id="crossfade"><span class="n">08</span>Crossfade</h2>
-<p><em>Cómo empalma una cosa con la otra.</em></p>
+<p><em data-en="How one track joins the next." data-pt="Como uma música emenda na seguinte.">Cómo empalma un tema con el que sigue.</em></p>
 <ul>
-  <li><strong>Cuánto se superponen dos canciones.</strong> Se mueve con la radio al aire y se escucha cómo queda en el momento.</li>
-  <li><strong>Cuánto monta un separador sobre la canción.</strong> Sin esto el seco entra a hueso y se escucha el bache: el silencio del final del tema pegado al silencio inicial del seco.</li>
+  <li data-en="<strong>How much two songs overlap.</strong> You move it with the station on air and hear how it lands, right there." data-pt="<strong>Quanto duas músicas se sobrepõem.</strong> Você mexe com a emissora no ar e escuta como fica, na hora."><strong>Cuánto se superponen dos canciones.</strong> Se mueve con la radio al aire y se escucha cómo queda en el momento.</li>
+  <li data-en="<strong>How much a jingle rides over the song.</strong> Without this the jingle comes in dry and you hear the gap: the silence at the end of the track glued to the silence at the start of the jingle." data-pt="<strong>Quanto uma vinheta monta sobre a música.</strong> Sem isso a vinheta entra seca e se escuta o buraco: o silêncio do fim da música colado no silêncio do começo da vinheta."><strong>Cuánto monta un separador sobre la canción.</strong> Sin esto el seco entra a hueso y se escucha el bache: el silencio del final del tema pegado al silencio inicial del seco.</li>
 </ul>
 <div class="aviso">
-  <p><strong>La publicidad nunca se monta</strong>, ni de un lado ni del otro: sale entera, de punta a punta. Un aviso se paga y no se pisa con nada.</p>
+  <p data-en="<strong>Advertising never overlaps</strong>, on either side: it airs whole, end to end. A spot is paid for and nothing steps on it." data-pt="<strong>A publicidade nunca se monta</strong>, nem de um lado nem do outro: vai ao ar inteira, de ponta a ponta. Um comercial é pago e nada passa por cima dele."><strong>La publicidad nunca se monta</strong>, ni de un lado ni del otro: sale entera, de punta a punta. Un aviso se paga y no se pisa con nada.</p>
 </div>
 
-<h2 id="sonido"><span class="n">09</span>Sonido</h2>
-<p><em>El procesador de audio.</em></p>
+<h2 id="sonido"><span class="n">09</span><span data-en="Sound" data-pt="Som">Sonido</span></h2>
+<p><em data-en="The audio processor." data-pt="O processador de áudio.">El procesador de audio.</em></p>
 <ul>
-  <li><strong>Qué está saliendo realmente</strong> — la medición en vivo de lo que va al transmisor</li>
-  <li><strong>Presets</strong>, calibrados midiendo contra FM comerciales reales</li>
-  <li><strong>Trabajo del procesador</strong> — cuánto está comprimiendo en cada momento</li>
-  <li><strong>Ajuste fino</strong> — graves, medios y agudos en dB, saturación y ganancia de salida</li>
+  <li data-en="<strong>What&rsquo;s actually going out</strong> &mdash; the live measurement of what reaches the transmitter" data-pt="<strong>O que está saindo de verdade</strong> &mdash; a medição ao vivo do que chega ao transmissor"><strong>Qué está saliendo realmente</strong> &mdash; la medición en vivo de lo que va al transmisor</li>
+  <li data-en="<strong>Presets</strong>, calibrated by measuring against real commercial FM stations" data-pt="<strong>Presets</strong>, calibrados medindo contra emissoras FM comerciais reais"><strong>Presets</strong>, calibrados midiendo contra FM comerciales reales</li>
+  <li data-en="<strong>Processor workload</strong> &mdash; how much it&rsquo;s compressing at any moment" data-pt="<strong>Trabalho do processador</strong> &mdash; quanto ele está comprimindo a cada momento"><strong>Trabajo del procesador</strong> &mdash; cuánto está comprimiendo en cada momento</li>
+  <li data-en="<strong>Fine tuning</strong> &mdash; bass, mids and treble in dB, saturation and output gain" data-pt="<strong>Ajuste fino</strong> &mdash; graves, médios e agudos em dB, saturação e ganho de saída"><strong>Ajuste fino</strong> &mdash; graves, medios y agudos en dB, saturación y ganancia de salida</li>
 </ul>
-<p>Adentro: compresión por bandas, ecualizador de siete filtros, limitador con techo duro y un clipper suave para los picos que igual se escapan.</p>
+<p data-en="Inside: multiband compression, a seven-filter equaliser, a hard-ceiling limiter and a soft clipper for the peaks that get through anyway." data-pt="Por dentro: compressão multibanda, equalizador de sete filtros, limitador com teto duro e um clipper suave para os picos que escapam mesmo assim.">Adentro: compresión por bandas, ecualizador de siete filtros, limitador con techo duro y un clipper suave para los picos que igual se escapan.</p>
 
-<h2 id="salida"><span class="n">10</span>Salida</h2>
-<p><em>El audio, el micrófono y el arranque.</em></p>
+<h2 id="salida"><span class="n">10</span><span data-en="Output" data-pt="Saída">Salida</span></h2>
+<p><em data-en="The audio, the microphone and the startup." data-pt="O áudio, o microfone e a inicialização.">El audio, el micrófono y el arranque.</em></p>
 <ul>
-  <li>Nombre de la emisora y placa de salida</li>
-  <li><strong>Volumen general</strong> — se escucha al instante, mientras lo movés</li>
-  <li><strong>Cue</strong> — escuchar sin salir al aire. Misma placa, dos placas, una placa partida o sin cue. Con su propio volumen.</li>
-  <li><strong>Micrófono y entrada de línea</strong> — el mic de la laptop, uno por USB, un músico o la mezcla de otro mixer</li>
-  <li><strong>Diagnóstico de la entrada</strong> — muestra cada eslabón con su valor: permiso del sistema, placa elegida y la que abrió de verdad, canales, frecuencia, si la pista está viva o muda, y el nivel de ahora. Con una foto de esa pantalla se sabe cuál eslabón está cortado.</li>
-  <li><strong>Título para el streaming</strong> — a qué archivo escribirlo y con qué formato: <span class="n">{artista} · {titulo} · {emisora}</span>, y qué hacer durante la tanda</li>
-  <li><strong>Vuelta después de un corte de luz</strong> — abrir cuando arranca la computadora, y salir al aire sola sin que nadie apriete nada</li>
+  <li data-en="Station name and output sound card" data-pt="Nome da emissora e placa de saída">Nombre de la emisora y placa de salida</li>
+  <li data-en="<strong>Master volume</strong> &mdash; you hear it instantly, while you move it" data-pt="<strong>Volume geral</strong> &mdash; se escuta na hora, enquanto você mexe"><strong>Volumen general</strong> &mdash; se escucha al instante, mientras lo movés</li>
+  <li data-en="<strong>Cue</strong> &mdash; listening without going to air. Same card, two cards, one split card, or no cue. With its own volume." data-pt="<strong>Cue</strong> &mdash; ouvir sem ir ao ar. Mesma placa, duas placas, uma placa dividida ou sem cue. Com volume próprio."><strong>Cue</strong> &mdash; escuchar sin salir al aire. Misma placa, dos placas, una placa partida o sin cue. Con su propio volumen.</li>
+  <li data-en="<strong>Microphone and line input</strong> &mdash; the laptop mic, a USB one, a musician, or a feed from another mixer" data-pt="<strong>Microfone e entrada de linha</strong> &mdash; o mic do notebook, um USB, um músico, ou a mistura de outra mesa"><strong>Micrófono y entrada de línea</strong> &mdash; el mic de la laptop, uno por USB, un músico o la mezcla de otro mixer</li>
+  <li data-en="<strong>Input diagnostics</strong> &mdash; shows every link in the chain with its value: system permission, the card you chose and the one it actually opened, channels, sample rate, whether the track is live or silent, and the current level. With a photo of that screen you know which link is broken." data-pt="<strong>Diagnóstico da entrada</strong> &mdash; mostra cada elo com seu valor: permissão do sistema, placa escolhida e a que realmente abriu, canais, frequência, se a faixa está viva ou muda, e o nível atual. Com uma foto dessa tela se sabe qual elo está cortado."><strong>Diagnóstico de la entrada</strong> &mdash; muestra cada eslabón con su valor: permiso del sistema, placa elegida y la que abrió de verdad, canales, frecuencia, si la pista está viva o muda, y el nivel de ahora. Con una foto de esa pantalla se sabe cuál eslabón está cortado.</li>
+  <li data-en="<strong>Now-playing text for the stream</strong> &mdash; which file to write it to and in what format: <span class=&quot;n&quot;>{artist} &middot; {title} &middot; {station}</span>, and what to do during the ad break" data-pt="<strong>Título para o streaming</strong> &mdash; em qual arquivo escrever e com qual formato: <span class=&quot;n&quot;>{artista} &middot; {titulo} &middot; {emissora}</span>, e o que fazer durante o intervalo"><strong>Título para el streaming</strong> &mdash; a qué archivo escribirlo y con qué formato: <span class="n">{artista} &middot; {titulo} &middot; {emisora}</span>, y qué hacer durante la tanda</li>
+  <li data-en="<strong>Coming back after a power cut</strong> &mdash; open when the computer boots, and go on air by itself without anyone pressing anything" data-pt="<strong>Volta depois de uma queda de energia</strong> &mdash; abrir quando o computador liga, e ir ao ar sozinho sem ninguém apertar nada"><strong>Vuelta después de un corte de luz</strong> &mdash; abrir cuando arranca la computadora, y salir al aire sola sin que nadie apriete nada</li>
 </ul>
 
 <h2 id="stream"><span class="n">11</span>Stream</h2>
-<p><em>La radio por internet, y el RDS.</em></p>
+<p><em data-en="Radio over the internet, and RDS." data-pt="A rádio pela internet, e o RDS.">La radio por internet, y el RDS.</em></p>
 <ul>
-  <li><strong>Los datos que te da el hosting</strong> — servidor, puerto y contraseña, con un botón de <strong>probar conexión</strong> que encuentra solo el puerto de la fuente</li>
-  <li><strong>Lo que están viendo los oyentes</strong> — el estado en vivo de la transmisión</li>
-  <li>Protocolo: <strong>SHOUTcast</strong>, <strong>Icecast 2</strong> o Icecast viejo. Punto de montaje, usuario, número de stream y conexión segura (SSL).</li>
-  <li><strong>Ajuste de nivel solo del streaming</strong>, sin tocar lo que sale al transmisor</li>
-  <li><strong>Cómo aparece la radio en los directorios</strong> — nombre, género y sitio web</li>
-  <li>Salir al aire por internet sola, apenas arranca el programa</li>
-  <li><strong>RDS</strong> — el texto que se ve en la radio del auto: codificador, dirección, puerto, velocidad y el comando. Con la opción de mandar solo la música, para que no viaje el nombre del archivo de un spot.</li>
+  <li data-en="<strong>The details your host gives you</strong> &mdash; server, port and password, with a <strong>test connection</strong> button that finds the source port by itself" data-pt="<strong>Os dados que a hospedagem te dá</strong> &mdash; servidor, porta e senha, com um botão de <strong>testar conexão</strong> que encontra sozinho a porta de origem"><strong>Los datos que te da el hosting</strong> &mdash; servidor, puerto y contraseña, con un botón de <strong>probar conexión</strong> que encuentra solo el puerto de la fuente</li>
+  <li data-en="<strong>What the listeners are seeing</strong> &mdash; the live state of the broadcast" data-pt="<strong>O que os ouvintes estão vendo</strong> &mdash; o estado ao vivo da transmissão"><strong>Lo que están viendo los oyentes</strong> &mdash; el estado en vivo de la transmisión</li>
+  <li data-en="Protocol: <strong>SHOUTcast</strong>, <strong>Icecast 2</strong> or old Icecast. Mount point, user, stream number and secure connection (SSL)." data-pt="Protocolo: <strong>SHOUTcast</strong>, <strong>Icecast 2</strong> ou Icecast antigo. Ponto de montagem, usuário, número do stream e conexão segura (SSL).">Protocolo: <strong>SHOUTcast</strong>, <strong>Icecast 2</strong> o Icecast viejo. Punto de montaje, usuario, número de stream y conexión segura (SSL).</li>
+  <li data-en="<strong>Level trim for the stream only</strong>, without touching what goes to the transmitter" data-pt="<strong>Ajuste de nível só do streaming</strong>, sem mexer no que vai ao transmissor"><strong>Ajuste de nivel solo del streaming</strong>, sin tocar lo que sale al transmisor</li>
+  <li data-en="<strong>How the station appears in the directories</strong> &mdash; name, genre and website" data-pt="<strong>Como a emissora aparece nos diretórios</strong> &mdash; nome, gênero e site"><strong>Cómo aparece la radio en los directorios</strong> &mdash; nombre, género y sitio web</li>
+  <li data-en="Go on air over the internet by itself, as soon as the program starts" data-pt="Ir ao ar pela internet sozinho, assim que o programa abre">Salir al aire por internet sola, apenas arranca el programa</li>
+  <li data-en="<strong>RDS</strong> &mdash; the text you see on a car radio: encoder, address, port, baud rate and the command. With the option to send only the music, so a spot&rsquo;s filename never travels." data-pt="<strong>RDS</strong> &mdash; o texto que aparece no rádio do carro: codificador, endereço, porta, velocidade e o comando. Com a opção de mandar só a música, para que o nome do arquivo de um spot nunca viaje."><strong>RDS</strong> &mdash; el texto que se ve en la radio del auto: codificador, dirección, puerto, velocidad y el comando. Con la opción de mandar solo la música, para que no viaje el nombre del archivo de un spot.</li>
 </ul>
 
 <h2 id="log"><span class="n">12</span>Log</h2>
-<p><em>Todo lo que salió al aire.</em></p>
-<p>Un archivo por día, en texto plano. Se escribe solo y es la fuente de verdad de todo lo demás: de acá salen la planilla, las certificaciones y el control de cumplimiento.</p>
+<p><em data-en="Everything that aired." data-pt="Tudo o que foi ao ar.">Todo lo que salió al aire.</em></p>
+<p data-en="One file per day, in plain text. It writes itself and it&rsquo;s the source of truth for everything else: the log sheet, the certificates and the compliance tracking all come from here." data-pt="Um arquivo por dia, em texto puro. Escreve-se sozinho e é a fonte da verdade de todo o resto: dele saem a planilha, os certificados e o controle de cumprimento.">Un archivo por día, en texto plano. Se escribe solo y es la fuente de verdad de todo lo demás: de acá salen la planilla, las certificaciones y el control de cumplimiento.</p>
 <ul>
-  <li><strong>Monitor en vivo</strong> de lo que está saliendo ahora, y el almanaque para ir a cualquier día</li>
-  <li><strong>Planilla e informes</strong> — buscar un tema, ver cuántas veces salió cada anunciante, imprimir en PDF y exportar en CSV eligiendo las fechas</li>
-  <li><strong>Auditoría del aire</strong> — compara lo que salió contra lo que pediste: si repitió antes de tiempo, si sacó de todas las carpetas, y cuánto de lo que cargaste llegó a sonar. Sobre 1, 3, 7 o 30 días.</li>
+  <li data-en="<strong>Live monitor</strong> of what&rsquo;s going out right now, and the calendar to jump to any day" data-pt="<strong>Monitor ao vivo</strong> do que está saindo agora, e o calendário para ir a qualquer dia"><strong>Monitor en vivo</strong> de lo que está saliendo ahora, y el almanaque para ir a cualquier día</li>
+  <li data-en="<strong>Log sheet and reports</strong> &mdash; search for a track, see how many times each advertiser aired, print to PDF and export to CSV picking the dates" data-pt="<strong>Planilha de veiculação e relatórios</strong> &mdash; procurar uma música, ver quantas vezes cada anunciante foi ao ar, imprimir em PDF e exportar em CSV escolhendo as datas"><strong>Planilla e informes</strong> &mdash; buscar un tema, ver cuántas veces salió cada anunciante, imprimir en PDF y exportar en CSV eligiendo las fechas</li>
+  <li data-en="<strong>Air audit</strong> &mdash; compares what aired against what you asked for: whether it repeated early, whether it drew from every folder, and how much of what you loaded actually played. Over 1, 3, 7 or 30 days." data-pt="<strong>Auditoria do ar</strong> &mdash; compara o que foi ao ar com o que você pediu: se repetiu antes da hora, se tirou de todas as pastas, e quanto do que você carregou chegou a tocar. Sobre 1, 3, 7 ou 30 dias."><strong>Auditoría del aire</strong> &mdash; compara lo que salió contra lo que pediste: si repitió antes de tiempo, si sacó de todas las carpetas, y cuánto de lo que cargaste llegó a sonar. Sobre 1, 3, 7 o 30 días.</li>
 </ul>
 
 <footer>
-  Esta es la descripción de las funciones. El <strong>manual de instrucciones</strong>, con el paso a paso de cada pantalla, va aparte y se entrega con el programa.
+  <span data-en="This is the description of the features. The <strong>instruction manual</strong>, with the step by step of every screen, comes separately and is delivered with the program." data-pt="Esta é a descrição das funções. O <strong>manual de instruções</strong>, com o passo a passo de cada tela, vai à parte e é entregue junto com o programa.">Esta es la descripción de las funciones. El <strong>manual de instrucciones</strong>, con el paso a paso de cada pantalla, va aparte y se entrega con el programa.</span>
   <br><br>
-  <a href="/">← Volver al inicio</a>
+  <a href="/" data-en="&larr; Back to home" data-pt="&larr; Voltar ao início">&larr; Volver al inicio</a>
 </footer>
 
 </div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Tres idiomas. El castellano es el que esta escrito en la pagina, asi que
+     se guarda en el elemento la primera vez y volver a el es exacto: no
+     depende de ningun diccionario inverso. */
+  var lengua = 'es';
+  var traducibles = Array.prototype.slice.call(
+    document.querySelectorAll('[data-en],[data-pt]'));
+  traducibles.forEach(function (el) { el.dataset.es = el.innerHTML; });
+
+  function ponerIdioma(cual) {
+    lengua = cual;
+    traducibles.forEach(function (el) {
+      // Lo que no tiene traduccion se queda como esta: una pagina a medio
+      // traducir es incomoda, una que revienta por una clave que falta no
+      // se puede leer.
+      var txt = el.dataset[cual];
+      if (txt) el.innerHTML = txt;
+      else if (cual === 'es') el.innerHTML = el.dataset.es;
+    });
+    document.documentElement.lang = cual;
+    document.querySelectorAll('[data-idioma]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.idioma === cual));
+    });
+    try { localStorage.setItem('airstrom-idioma', cual); } catch (e) {}
+  }
+
+  document.querySelectorAll('[data-idioma]').forEach(function (b) {
+    b.addEventListener('click', function () { ponerIdioma(b.dataset.idioma); });
+  });
+
+  /* Si eligio idioma en otra pagina del sitio, se respeta. */
+  try {
+    var guardado = localStorage.getItem('airstrom-idioma');
+    if (guardado && guardado !== 'es') ponerIdioma(guardado);
+  } catch (e) {}
+})();
+</script>
+
 </body>
 </html>
