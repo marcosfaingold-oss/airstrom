@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qué tiene Airstrom</title>
+<meta name="description" content="Todo lo que hace Airstrom, función por función: carpetas, archivos, AutoDJ, programación semanal, publicidad por contrato, eventos, reloj, crossfade, procesador, streaming, RDS y registro de emisión.">
+<meta name="theme-color" content="#0D1116">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Literata:opsz,wght@7..72,300..600&display=swap">
+<style>
+:root{
+  --noche:#0D1116; --chapa:#161C24; --chapa2:#1C232C; --hundido:#0A0E13;
+  --bisel:#2A323E; --luz:rgba(255,255,255,.05);
+  --ambar:#FF9900; --ambar-claro:#FFC061; --ambar-piso:rgba(255,153,0,.09);
+  --tiza:#EDF1F6; --tiza-media:#A4B0BF; --tiza-tenue:#6B7887;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --prosa:"Literata",Georgia,serif;
+  --dato:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --borde:clamp(1.2rem,5vw,2.5rem);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--noche)}
+body{
+  margin:0;background:var(--noche);color:var(--tiza-media);
+  font-family:var(--prosa);font-size:1.02rem;line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+.hoja{max-width:calc(72ch + var(--borde)*2);margin-inline:auto;padding:0 var(--borde) 5rem}
+
+/* barra de arriba, igual que la portada */
+.rail{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;gap:1rem;padding:.55rem var(--borde);
+  background:rgba(13,17,22,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--bisel);
+}
+.rail-marca{display:flex;align-items:center;gap:.5rem;text-decoration:none}
+.rail-marca svg{width:18px;height:18px;display:block}
+.rail-marca span{font-family:var(--display);font-weight:700;font-size:.92rem;
+  letter-spacing:.13em;color:var(--tiza)}
+.pestanas{display:flex;align-items:center;gap:.15rem;overflow-x:auto;
+  scrollbar-width:none;margin-inline:.4rem;min-width:0}
+.pestanas::-webkit-scrollbar{display:none}
+.pestanas a{flex:none;text-decoration:none;white-space:nowrap;
+  font-family:var(--display);font-size:.68rem;font-weight:700;
+  font-variation-settings:"wdth" 104;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--tiza-tenue);padding:.42rem .6rem;border-radius:3px}
+.pestanas a:hover{color:var(--tiza);background:rgba(255,255,255,.05)}
+.pestanas a.aca{color:var(--ambar)}
+.pestanas a.pronto{color:#4C5766;cursor:default}
+:where(a,button):focus-visible{outline:2px solid var(--ambar);outline-offset:2px}
+@media (max-width:560px){.rail-marca span{display:none}
+  .pestanas a{padding:.42rem .45rem;font-size:.64rem;letter-spacing:.08em}}
+
+h1,h2,h3{font-family:var(--display);color:var(--tiza);margin:0;line-height:1.12;text-wrap:balance}
+h1{font-size:clamp(2rem,5.5vw,3rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.35rem,3.3vw,1.75rem);font-weight:800;letter-spacing:-.01em;
+   margin-top:3.2rem;padding-top:1.5rem;border-top:1px solid var(--bisel);
+   box-shadow:inset 0 1px 0 var(--luz)}
+h2 .n{font-family:var(--dato);font-size:.62em;font-weight:500;color:var(--ambar);
+  margin-right:.6rem;letter-spacing:.02em}
+h3{font-size:1rem;font-weight:700;margin-top:1.8rem;color:var(--tiza)}
+p{margin:1rem 0}
+strong{color:var(--tiza);font-weight:600}
+em{color:var(--tiza-media)}
+
+header{padding:clamp(2.5rem,7vw,4rem) 0 .5rem}
+.rotulo{font-family:var(--display);font-size:.68rem;font-weight:700;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--ambar);margin:0 0 .9rem}
+.entrada{font-size:1.12rem;color:var(--tiza-media);margin-top:1.2rem}
+
+ul{padding-left:1.15rem;margin:1rem 0}
+li{margin:.5rem 0}
+li::marker{color:var(--ambar)}
+
+.aviso{border-left:2px solid var(--ambar);background:var(--ambar-piso);
+  padding:1rem 1.2rem;margin:1.5rem 0;border-radius:0 4px 4px 0}
+.aviso p{margin:.4rem 0}
+.aviso p:first-child{margin-top:0}.aviso p:last-child{margin-bottom:0}
+
+/* el índice de arriba */
+/* Trece pestanas no llenan cuatro columnas: la celda que sobra tiene que
+   parecer un espacio vacio, no un agujero. Por eso las lineas van como borde
+   de cada celda y no como separacion del contenedor. */
+.indice{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));
+  gap:0;background:var(--chapa);border:1px solid var(--bisel);
+  border-radius:5px;overflow:hidden;margin:2rem 0}
+.indice a{display:block;background:var(--chapa);padding:.75rem .9rem;
+  text-decoration:none;color:var(--tiza-media);
+  border-right:1px solid var(--bisel);border-bottom:1px solid var(--bisel);
+  font-family:var(--display);font-size:.75rem;font-weight:700;
+  letter-spacing:.06em;box-shadow:inset 0 1px 0 var(--luz)}
+.indice a:hover{background:var(--chapa2);color:var(--ambar-claro)}
+.indice a b{display:block;font-family:var(--dato);font-size:.62rem;
+  font-weight:500;color:var(--tiza-tenue);letter-spacing:.05em;margin-bottom:.15rem}
+
+footer{margin-top:3.5rem;padding-top:1.5rem;border-top:1px solid var(--bisel);
+  box-shadow:inset 0 1px 0 var(--luz);font-size:.85rem;color:var(--tiza-tenue)}
+footer a{color:var(--ambar-claro);text-decoration:none;border-bottom:1px solid rgba(255,192,97,.3)}
+</style>
+</head>
+<body>
+
+<nav class="rail">
+  <a class="rail-marca" href="/">
+    <svg viewBox="14 -24 188 156" aria-hidden="true" fill="none" stroke="#FF9900" stroke-linecap="round">
+      <path d="M86 116 C45 116 23 92 23 60 C23 27 46 6 78 6 C108 6 126 27 126 58 C126 90 108 116 86 116 Z" stroke-width="13"/>
+      <path d="M126 48 L126 121" stroke-width="13"/>
+      <path d="M119 7 C145 11 160 26 164 50" stroke-width="10"/>
+      <path d="M126 -17 C165 -11 187 12 192 46" stroke-width="9"/>
+    </svg>
+    <span>airstrom</span>
+  </a>
+  <nav class="pestanas" aria-label="Secciones">
+    <a href="/">Inicio</a>
+    <a href="/#nosotros">Nosotros</a>
+    <a href="/programa.html" class="aca">El programa</a>
+    <a href="/#precio">Precios</a>
+    <a class="pronto" title="En preparación">Manual</a>
+    <a class="pronto" title="En preparación">Descargas</a>
+    <a href="/#precio">Contacto</a>
+  </nav>
+</nav>
+
+<div class="hoja">
+
+<header>
+  <p class="rotulo">El programa, por dentro</p>
+  <h1>Qué tiene Airstrom</h1>
+  <p class="entrada">Todo lo que hace, función por función. No es un manual de instrucciones: es la lista de lo que vas a encontrar adentro cuando lo abras.</p>
+</header>
+
+<h2 style="border-top:0;box-shadow:none;padding-top:0;margin-top:2.5rem">Lo que hace, en dos renglones</h2>
+
+<p><strong>Airstrom mantiene una radio al aire sola.</strong> Elige la música sin repetir, arma las tandas de publicidad respetando lo que cada anunciante contrató, cumple los horarios y deja registrado todo lo que salió.</p>
+
+<p>Y cuando alguien se sienta frente al micrófono, deja de ser un automático y pasa a ser una consola: cuatro faders, vúmetros y botonera para disparar a mano.</p>
+
+<div class="aviso">
+  <p><strong>Corre en la computadora de la radio, no en internet.</strong> Si se corta la conexión, la radio sigue al aire — lo único que se cae es el streaming. Y si se corta la luz, vuelve sola cuando la máquina arranca, retomando el ciclo donde estaba.</p>
+</div>
+
+<div class="indice">
+  <a href="#principal"><b>La pantalla</b>Principal</a>
+  <a href="#carpetas"><b>Pestaña</b>Carpetas</a>
+  <a href="#archivos"><b>Pestaña</b>Archivos</a>
+  <a href="#autodj"><b>Pestaña</b>AutoDJ</a>
+  <a href="#programacion"><b>Pestaña</b>Programación</a>
+  <a href="#publicidad"><b>Pestaña</b>Publicidad</a>
+  <a href="#evento"><b>Pestaña</b>Evento</a>
+  <a href="#reloj"><b>Pestaña</b>Reloj</a>
+  <a href="#crossfade"><b>Pestaña</b>Crossfade</a>
+  <a href="#sonido"><b>Pestaña</b>Sonido</a>
+  <a href="#salida"><b>Pestaña</b>Salida</a>
+  <a href="#stream"><b>Pestaña</b>Stream</a>
+  <a href="#log"><b>Pestaña</b>Log</a>
+</div>
+
+<h2 id="principal">La pantalla principal</h2>
+
+<p>Es la que está abierta todo el día. Todo lo que el operador necesita mirar entra sin abrir nada.</p>
+
+<ul>
+  <li><strong>Lo que está sonando</strong> — título, artista, cuánto lleva y cuánto le falta, con la barra de avance. Se puede arrastrar para moverse dentro del tema.</li>
+  <li><strong>Los segundos de instrumental antes de que entre la voz</strong>, con cuenta regresiva al lado del tiempo — <em>«voz en 7 s»</em>—, latiendo los últimos tres. Es lo que el locutor tiene para hablar encima.</li>
+  <li><strong>La grilla del día</strong> — lo que viene, con la hora de cada cosa, de qué carpeta sale y las tandas marcadas. Cada renglón tiene su botón para escucharlo por el cue sin que salga al aire.</li>
+  <li><strong>El transporte</strong> — pausa, crossfade, fade y sigue, saltar, fade out. El de pausa ocupa el doble y tiene color propio: es la decisión que no se puede errar.</li>
+  <li><strong>Automático o manual</strong>, con un botón.</li>
+  <li><strong>La botonera</strong> — cartuchos para disparar a mano: cortinas, efectos, o canciones para pasar en vivo. Se asignan una vez y quedan.</li>
+  <li><strong>La consola</strong> — cuatro faders (MAIN, AUTO, CUE y MIC/LINE), vúmetros por canal y cue por canal para escuchar por los auriculares lo que está por salir.</li>
+  <li><strong>El reloj</strong>, grande, con el día y la fecha escritos. Al aire se pone rojo: es la señal más barata de que la radio está saliendo.</li>
+</ul>
+
+<h2 id="carpetas"><span class="n">01</span>Carpetas</h2>
+<p><em>Dónde está la música.</em></p>
+<p>Se agregan todas las carpetas del disco: música, institucionales, aperturas, cierres y publicidades. <strong>El tipo de cada una define cómo rota:</strong> las de publicidad van en círculo —todos los avisos salen la misma cantidad de veces— y el resto va por bolsa, que es lo que hace que no se repita ningún tema hasta que sonaron todos.</p>
+<ul>
+  <li>Agregar carpeta, con su tipo</li>
+  <li>Escanear biblioteca — vuelve a leer el disco y toma lo que agregaste</li>
+</ul>
+
+<h2 id="archivos"><span class="n">02</span>Archivos</h2>
+<p><em>El administrador de audio.</em></p>
+<p>Dos columnas, una carpeta en cada una, para mover temas de un lado al otro. Lo que se hace acá <strong>toca los archivos en el disco de verdad</strong> — y borrar manda a la papelera, no destruye.</p>
+<ul>
+  <li>Mover entre carpetas, agregar audio, renombrar y mandar a la papelera</li>
+  <li>Arrastrar un tema a la izquierda para que sea <strong>el próximo al aire</strong></li>
+  <li><strong>Blancos</strong> — busca los silencios al principio y al final de cada archivo de la carpeta y anota desde dónde reproducir. <em>No toca el archivo.</em></li>
+  <li><strong>Emparejar</strong> — mide el volumen de cada archivo y anota cuánto subir o bajar, contra la mediana de la carpeta. Es lo que hace que una radio suene pareja. <em>Tampoco toca el archivo.</em></li>
+  <li><strong>Cómo sale al aire</strong> — una ventana por tema: la forma de onda a lo ancho, las marcas de entrada y salida, los desvanecidos dibujados donde pasan, el volumen propio del tema y los segundos de intro antes de la voz. Se escucha con los desvanecidos puestos, no plano.</li>
+</ul>
+
+<h2 id="autodj"><span class="n">03</span>AutoDJ</h2>
+<p><em>El orden en que suena la radio.</em></p>
+<p>Se trabaja con <strong>perfiles</strong>: cada uno es una manera de sonar. Uno para la mañana, otro para la tarde, otro para el fin de semana. Se crean, se duplican y se borran.</p>
+<ul>
+  <li><strong>Secuencia</strong> — el orden en que recorre las carpetas, en loop. Un paso de institucionales donde quieras que la radio se identifique entre tema y tema.</li>
+  <li><strong>Tanda</strong> — apertura, publicidades y cierre, cada una saliendo de su propia carpeta</li>
+  <li><strong>Actualizar AutoDJ</strong> — relee las carpetas y aplica los cambios al aire en el momento, <strong>sin cortar lo que está sonando</strong></li>
+  <li><strong>Estado de las bolsas</strong> — cuánto le falta a cada carpeta para completar el ciclo</li>
+</ul>
+
+<h2 id="programacion"><span class="n">04</span>Programación</h2>
+<p><em>La grilla de la semana.</em></p>
+<p>Qué perfil suena a cada hora, día por día. Se arma un día entero y para el siguiente se usa <strong>Copiar de…</strong>, cambiando solo lo que sea distinto — así el viernes que tiene un programa especial es el jueves copiado con un bloque cambiado, y no hay que rehacer nada.</p>
+<div class="aviso">
+  <p><strong>Nunca corta un tema.</strong> Si a las 21:00 hay una canción al aire, la canción termina y recién ahí entra el perfil nuevo.</p>
+</div>
+<p>Se puede apagar entera y dejar la radio con el perfil que elijas a mano.</p>
+
+<h2 id="publicidad"><span class="n">05</span>Publicidad</h2>
+<p><em>Los contratos, y que se cumplan.</em></p>
+<p>Cada anunciante con sus spots y la forma en que los contrató:</p>
+<ul>
+  <li><strong>Rotativo por franja horaria</strong> — tantas salidas por día, dentro de la franja</li>
+  <li><strong>Horarios estrictos</strong> — a la hora exacta, la que se vendió</li>
+  <li>Salidas por día, y desde cuándo hasta cuándo — o sin fecha de fin, hasta que lo saques</li>
+  <li>Un spot puede ser un archivo o una carpeta entera, para que roten varias piezas del mismo aviso</li>
+</ul>
+<p><strong>Datos comerciales:</strong> número de orden, vendedor, número de agencia, compañía, CUIT, anunciante y producto.</p>
+<ul>
+  <li><strong>Franjas horarias</strong> — se definen una vez y se usan en todos los contratos</li>
+  <li><strong>Certificaciones</strong> — el comprobante para el anunciante, con membrete, logo y firma</li>
+  <li><strong>Cumplimiento de hoy</strong> — cuánto lleva entregado cada anunciante y cuánto le falta, en vivo</li>
+</ul>
+
+<h2 id="evento"><span class="n">06</span>Evento</h2>
+<p><em>Lo que sale a la hora exacta.</em></p>
+<p>Un bloque con apertura, tema y cierre, a una hora fija y los días que elijas. Va en el medio de la música, <strong>fuera de la tanda</strong>: a la hora marcada espera a que termine el tema que está sonando y entra.</p>
+<p>Nunca corta una canción ni una publicidad.</p>
+
+<h2 id="reloj"><span class="n">07</span>Reloj</h2>
+<p><em>Cuándo entran las tandas.</em></p>
+<ul>
+  <li><strong>Minutos de tanda</strong> — a los 20 y a los 50, por ejemplo</li>
+  <li><strong>Franjas horarias</strong> con reglas propias, para que la mañana no tenga la misma carga que la madrugada</li>
+  <li><strong>Máximo de publicidad por tanda</strong>, en segundos</li>
+  <li><strong>Separación de artista</strong> — minutos que tienen que pasar antes de repetir el mismo intérprete</li>
+</ul>
+
+<h2 id="crossfade"><span class="n">08</span>Crossfade</h2>
+<p><em>Cómo empalma una cosa con la otra.</em></p>
+<ul>
+  <li><strong>Cuánto se superponen dos canciones.</strong> Se mueve con la radio al aire y se escucha cómo queda en el momento.</li>
+  <li><strong>Cuánto monta un separador sobre la canción.</strong> Sin esto el seco entra a hueso y se escucha el bache: el silencio del final del tema pegado al silencio inicial del seco.</li>
+</ul>
+<div class="aviso">
+  <p><strong>La publicidad nunca se monta</strong>, ni de un lado ni del otro: sale entera, de punta a punta. Un aviso se paga y no se pisa con nada.</p>
+</div>
+
+<h2 id="sonido"><span class="n">09</span>Sonido</h2>
+<p><em>El procesador de audio.</em></p>
+<ul>
+  <li><strong>Qué está saliendo realmente</strong> — la medición en vivo de lo que va al transmisor</li>
+  <li><strong>Presets</strong>, calibrados midiendo contra FM comerciales reales</li>
+  <li><strong>Trabajo del procesador</strong> — cuánto está comprimiendo en cada momento</li>
+  <li><strong>Ajuste fino</strong> — graves, medios y agudos en dB, saturación y ganancia de salida</li>
+</ul>
+<p>Adentro: compresión por bandas, ecualizador de siete filtros, limitador con techo duro y un clipper suave para los picos que igual se escapan.</p>
+
+<h2 id="salida"><span class="n">10</span>Salida</h2>
+<p><em>El audio, el micrófono y el arranque.</em></p>
+<ul>
+  <li>Nombre de la emisora y placa de salida</li>
+  <li><strong>Volumen general</strong> — se escucha al instante, mientras lo movés</li>
+  <li><strong>Cue</strong> — escuchar sin salir al aire. Misma placa, dos placas, una placa partida o sin cue. Con su propio volumen.</li>
+  <li><strong>Micrófono y entrada de línea</strong> — el mic de la laptop, uno por USB, un músico o la mezcla de otro mixer</li>
+  <li><strong>Diagnóstico de la entrada</strong> — muestra cada eslabón con su valor: permiso del sistema, placa elegida y la que abrió de verdad, canales, frecuencia, si la pista está viva o muda, y el nivel de ahora. Con una foto de esa pantalla se sabe cuál eslabón está cortado.</li>
+  <li><strong>Título para el streaming</strong> — a qué archivo escribirlo y con qué formato: <span class="n">{artista} · {titulo} · {emisora}</span>, y qué hacer durante la tanda</li>
+  <li><strong>Vuelta después de un corte de luz</strong> — abrir cuando arranca la computadora, y salir al aire sola sin que nadie apriete nada</li>
+</ul>
+
+<h2 id="stream"><span class="n">11</span>Stream</h2>
+<p><em>La radio por internet, y el RDS.</em></p>
+<ul>
+  <li><strong>Los datos que te da el hosting</strong> — servidor, puerto y contraseña, con un botón de <strong>probar conexión</strong> que encuentra solo el puerto de la fuente</li>
+  <li><strong>Lo que están viendo los oyentes</strong> — el estado en vivo de la transmisión</li>
+  <li>Protocolo: <strong>SHOUTcast</strong>, <strong>Icecast 2</strong> o Icecast viejo. Punto de montaje, usuario, número de stream y conexión segura (SSL).</li>
+  <li><strong>Ajuste de nivel solo del streaming</strong>, sin tocar lo que sale al transmisor</li>
+  <li><strong>Cómo aparece la radio en los directorios</strong> — nombre, género y sitio web</li>
+  <li>Salir al aire por internet sola, apenas arranca el programa</li>
+  <li><strong>RDS</strong> — el texto que se ve en la radio del auto: codificador, dirección, puerto, velocidad y el comando. Con la opción de mandar solo la música, para que no viaje el nombre del archivo de un spot.</li>
+</ul>
+
+<h2 id="log"><span class="n">12</span>Log</h2>
+<p><em>Todo lo que salió al aire.</em></p>
+<p>Un archivo por día, en texto plano. Se escribe solo y es la fuente de verdad de todo lo demás: de acá salen la planilla, las certificaciones y el control de cumplimiento.</p>
+<ul>
+  <li><strong>Monitor en vivo</strong> de lo que está saliendo ahora, y el almanaque para ir a cualquier día</li>
+  <li><strong>Planilla e informes</strong> — buscar un tema, ver cuántas veces salió cada anunciante, imprimir en PDF y exportar en CSV eligiendo las fechas</li>
+  <li><strong>Auditoría del aire</strong> — compara lo que salió contra lo que pediste: si repitió antes de tiempo, si sacó de todas las carpetas, y cuánto de lo que cargaste llegó a sonar. Sobre 1, 3, 7 o 30 días.</li>
+</ul>
+
+<footer>
+  Esta es la descripción de las funciones. El <strong>manual de instrucciones</strong>, con el paso a paso de cada pantalla, va aparte y se entrega con el programa.
+  <br><br>
+  <a href="/">← Volver al inicio</a>
+</footer>
+
+</div>
+</body>
+</html>
