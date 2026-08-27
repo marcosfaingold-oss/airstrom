@@ -532,6 +532,50 @@ h1{font-size:clamp(2.2rem,7.2vw,3.9rem)}
 }
 .plataforma svg{width:15px;height:15px;fill:currentColor;flex:none;display:block}
 
+/* EL CONTACTO. Dos caminos: mail o WhatsApp.
+   Los tres campos no son un tramite: van adentro del mail, asi Marcos
+   recibe quien es y de que radio antes de leer una palabra. */
+.contacto{max-width:26rem;margin:2.2rem auto 0;text-align:left}
+.campos{display:grid;gap:.55rem}
+.campos input{
+  width:100%;padding:.72rem .85rem;
+  font-family:var(--prosa);font-size:.95rem;color:var(--tiza);
+  background:var(--hundido);border:1px solid var(--bisel);border-radius:4px;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.5);
+}
+.campos input::placeholder{color:var(--tiza-tenue)}
+.campos input:focus{outline:none;border-color:rgba(255,153,0,.6);
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.5), 0 0 0 3px rgba(255,153,0,.12)}
+.campos input:user-invalid{border-color:rgba(255,74,56,.55)}
+
+.acciones{display:flex;flex-direction:column;gap:.6rem;margin-top:.9rem}
+.boton{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  width:100%;padding:.85rem 1.1rem;border-radius:5px;cursor:pointer;
+  font-family:var(--display);font-size:.78rem;font-weight:700;
+  font-variation-settings:"wdth" 106;letter-spacing:.13em;text-transform:uppercase;
+  text-decoration:none;border:1px solid transparent;
+  transition:filter .15s ease, border-color .15s ease;
+}
+.boton svg{width:17px;height:17px;flex:none;display:block}
+/* Sin esto el boton se ve igual cuando esta oculto: el display del propio
+   .boton le gana al display:none que trae el atributo hidden. */
+.boton[hidden]{display:none}
+.boton.mail{background:var(--ambar);color:#151515;border-color:#FFB444}
+.boton.mail:hover{filter:brightness(1.08)}
+.boton.wa{
+  background:linear-gradient(180deg,#242D39 0%,#1A222C 100%);
+  color:var(--tiza);border-color:var(--bisel);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+}
+.boton.wa:hover{border-color:#3FA96B;color:#fff}
+.boton.wa svg{fill:#3FA96B}
+.mail-directo{
+  margin-top:1rem;font-family:var(--dato);font-size:.78rem;color:var(--tiza-tenue);
+}
+.mail-directo a{color:var(--ambar-claro);text-decoration:none;
+  border-bottom:1px solid rgba(255,192,97,.3)}
+
 .hueco{
   display:inline-block;margin-top:1.6rem;padding:.9rem 1.5rem;
   font-family:var(--dato);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
@@ -749,7 +793,27 @@ footer .rotulo{color:var(--tiza-tenue)}
 
     <p class="invita" data-en="For more information, get in touch." data-pt="Para mais informa&#231;&#245;es, fale com a gente.">Para m&#225;s informaci&#243;n comunicate con nosotros.</p>
 
-    <p class="hueco" data-en="Contact goes here" data-pt="Aqui vai o contato">Ac&#225; va el contacto</p>
+    <div class="contacto">
+      <div class="campos">
+        <input id="c-nombre"  type="text"  autocomplete="name"         data-ph-es="Tu nombre"        data-ph-en="Your name"        data-ph-pt="Seu nome">
+        <input id="c-empresa" type="text"  autocomplete="organization" data-ph-es="Tu radio o empresa" data-ph-en="Your station or company" data-ph-pt="Sua emissora ou empresa">
+        <input id="c-mail"    type="email" autocomplete="email"        data-ph-es="Tu mail"          data-ph-en="Your email"       data-ph-pt="Seu e-mail">
+      </div>
+      <div class="acciones">
+        <button type="button" class="boton mail" id="btn-mail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <span data-en="Send us an email" data-pt="Enviar um e-mail">Enviarnos un mail</span>
+        </button>
+        <a class="boton wa" id="btn-wa" href="#" target="_blank" rel="noopener" hidden>
+          <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.6.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.6-1.5-.9-2.1-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.3.3-1 .9-1 2.3s1 2.7 1.2 2.9c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4 0-.1-.2-.2-.5-.3M12 21.5a9.4 9.4 0 0 1-4.8-1.3l-3.4.9.9-3.3A9.5 9.5 0 1 1 12 21.5m0-20.5a10.9 10.9 0 0 0-9.4 16.4L1 23l5.8-1.5A10.9 10.9 0 1 0 12 1"/></svg>
+          <span data-en="Message us on WhatsApp" data-pt="Fale conosco no WhatsApp">Escribinos por WhatsApp</span>
+        </a>
+      </div>
+      <p class="mail-directo">
+        <span data-en="Or write directly to" data-pt="Ou escreva direto para">O escribinos directo a</span>
+        <a href="mailto:info@airstromaudio.com">info@airstromaudio.com</a>
+      </p>
+    </div>
   </div>
 </section>
 
@@ -804,6 +868,7 @@ footer .rotulo{color:var(--tiza-tenue)}
       b.setAttribute('aria-pressed', String(b.dataset.idioma === cual));
     });
     contar();
+    ponerEjemplos(cual);
     // Para que al pasar a otra pagina del sitio siga en el mismo idioma.
     try { localStorage.setItem('airstrom-idioma', cual); } catch (e) {}
   }
@@ -824,6 +889,79 @@ footer .rotulo{color:var(--tiza-tenue)}
     btnLupa.innerHTML = btnLupa.dataset[lengua];
     if (abierta) marco.querySelector('.marco-vista').scrollLeft = 0;
   });
+
+  /* EL CONTACTO.
+     La pagina es estatica: no hay servidor donde guardar nada. Lo que si se
+     puede es que los tres datos viajen ADENTRO del mail, para que Marcos
+     reciba quien escribe y de que radio antes de leer la consulta.
+     Si la persona no manda el mail, no llega nada. No hay forma honesta de
+     evitarlo sin un servidor, y capturar lo que alguien decidio no enviar
+     no es algo que se deba hacer. */
+
+  var MAIL = 'info@airstromaudio.com';
+
+  // Cuando este el numero va aca, con el codigo de pais y sin espacios ni
+  // signos: por ejemplo 5492355000000. Vacio, el boton no se muestra --
+  // mejor que no exista a que lleve a una conversacion rota.
+  var WHATSAPP = '';
+
+  var PIDE = {
+    es: 'Complet\u00e1 tu nombre, tu radio y tu mail para que sepamos qui\u00e9n sos.',
+    en: 'Please fill in your name, station and email so we know who you are.',
+    pt: 'Preencha seu nome, sua emissora e seu e-mail para sabermos quem \u00e9 voc\u00ea.'
+  };
+  var ASUNTO = { es: 'Consulta por Airstrom', en: 'Airstrom enquiry', pt: 'Consulta sobre o Airstrom' };
+  var ROTULO = {
+    es: ['Nombre', 'Radio o empresa', 'Mail'],
+    en: ['Name', 'Station or company', 'Email'],
+    pt: ['Nome', 'Emissora ou empresa', 'E-mail']
+  };
+
+  function campo(id) { return (document.getElementById(id) || {}).value || ''; }
+
+  var btnMail = document.getElementById('btn-mail');
+  if (btnMail) btnMail.addEventListener('click', function () {
+    var n = campo('c-nombre').trim(),
+        e = campo('c-empresa').trim(),
+        m = campo('c-mail').trim();
+
+    if (!n || !e || !m || m.indexOf('@') < 1) {
+      alert(PIDE[lengua] || PIDE.es);
+      (document.getElementById(!n ? 'c-nombre' : !e ? 'c-empresa' : 'c-mail') || {}).focus &&
+        document.getElementById(!n ? 'c-nombre' : !e ? 'c-empresa' : 'c-mail').focus();
+      return;
+    }
+
+    var r = ROTULO[lengua] || ROTULO.es;
+    var cuerpo = r[0] + ': ' + n + '\n' + r[1] + ': ' + e + '\n' + r[2] + ': ' + m + '\n\n';
+    window.location.href = 'mailto:' + MAIL
+      + '?subject=' + encodeURIComponent((ASUNTO[lengua] || ASUNTO.es) + ' \u2014 ' + e)
+      + '&body=' + encodeURIComponent(cuerpo);
+  });
+
+  /* El de WhatsApp lleva los mismos datos en el primer mensaje. */
+  var btnWa = document.getElementById('btn-wa');
+  if (btnWa && WHATSAPP) {
+    btnWa.hidden = false;
+    btnWa.addEventListener('click', function (ev) {
+      var n = campo('c-nombre').trim(), e = campo('c-empresa').trim();
+      var saludo = { es: 'Hola, soy ', en: 'Hi, I am ', pt: 'Ol\u00e1, sou ' }[lengua] || 'Hola, soy ';
+      var de = { es: ', de ', en: ', from ', pt: ', da ' }[lengua] || ', de ';
+      var texto = (n && e) ? saludo + n + de + e + '. ' : '';
+      var cierre = { es: 'Quiero saber m\u00e1s sobre Airstrom.',
+                     en: 'I would like to know more about Airstrom.',
+                     pt: 'Gostaria de saber mais sobre o Airstrom.' }[lengua];
+      btnWa.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto + cierre);
+    });
+  }
+
+  /* Los textos de ejemplo de los campos tambien cambian con el idioma. */
+  function ponerEjemplos(cual) {
+    document.querySelectorAll('[data-ph-es]').forEach(function (el) {
+      el.placeholder = el.dataset['ph' + cual.charAt(0).toUpperCase() + cual.slice(1)] || el.dataset.phEs;
+    });
+  }
+  ponerEjemplos('es');
 
   /* LA MARCA. "radio control" se estira hasta medir exactamente lo mismo que
      la palabra de arriba. Se calcula y no se escribe a mano: el ancho depende
